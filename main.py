@@ -76,23 +76,11 @@ class OutilDiagnostic(QWidget):
             if len (message) != 0:
                 msg_s = message.split()
                 print(msg_s)
-                corrupt = False
-                # for elt in msg_s[1:]:
-                #     if corrupt:
-                #         print("corrupt:", elt)
-                #     corrupt = corrupt or not elt.isdecimal()
-                if message[0] == "l" and not corrupt:
-                    if len(msg_s) == 7:
-                        angle = int(msg_s[1])
-                        if angle <360:
-                            self.dist_dict[angle] = int(msg_s[2])
-                            self.valid_dict[angle] = int(msg_s[3])
-                            self.inzone_dict[angle] = int(msg_s[4])
-                            self.true_pos[angle] = [int(msg_s[5]), int(msg_s[6])]
-                            #print(msg_s)
-                elif message[0] == "s":
-                    if len(msg_s) == 2:
-                        self.motorSpeed = float(msg_s[1])
+                if len(msg_s) == 7:
+                    angle = int(msg_s[0])
+                    if angle < 360:
+                        self.dist_dict[angle] = int(msg_s[1])
+                        self.quality_dict[angle] = int(msg_s[2])
 
     def start (self):
         """Démarre le thread d'écoute"""
