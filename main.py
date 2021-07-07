@@ -31,7 +31,7 @@ class OutilDiagnostic(QWidget):
         self.last_proximity = time.time()
         self.reset_timer = QTimer()
         self.reset_timer.timeout.connect(self.reset_dicts)
-        self.reset_timer.start(3000)
+        self.reset_timer.start(2000)
 
     def closeEvent(self, event):
         self.stop()
